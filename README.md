@@ -6,7 +6,7 @@
 
   <p class="projectBadges">
     <img src="https://johng.io/badges/category/Extension.svg" alt="Project category" title="Project category"/>
-    <img src="https://img.shields.io/github/languages/top/twocaretcat/dark-mode-for-outlook.svg" alt="Language" title="Language"/>
+    <img src="https://img.shields.io/github/languages/top/caret-collective/dark-mode-for-outlook.svg" alt="Language" title="Language"/>
     <a href="https://chrome.google.com/webstore/detail/dark-mode-for-outlook/kjfbefcenipnnpbcbbklcidpjiamlcpl">
       <img src="https://img.shields.io/chrome-web-store/v/kjfbefcenipnnpbcbbklcidpjiamlcpl.svg" alt="View on the Chrome Web Store" title="View on the Chrome Web Store"/>
     </a>
@@ -17,11 +17,11 @@
       <img src="https://img.shields.io/badge/dynamic/json?label=edge%20add-on&prefix=v&query=%24.version&url=https%3A%2F%2Fmicrosoftedge.microsoft.com%2Faddons%2Fgetproductdetailsbycrxid%2Fncmfoiokkfipenppipihehpoikhacpep" alt="View on the Edge Add-ons Page" title="View on the Edge Add-ons Page"/>
     </a>
     <a href="https://addons.opera.com/en/extensions/details/dark-mode-for-outlook/">
-      <img src="https://img.shields.io/badge/dynamic/json?label=opera%20add-on&color=blue&query=%24.tag_name&url=https%3A%2F%2Fapi.github.com%2Frepos%2Ftwocaretcat%2Fdark-mode-for-outlook%2Freleases%2Flatest" alt="View on the Opera Add-ons Page" title="View on the Opera Add-ons Page"/>
+      <img src="https://img.shields.io/badge/dynamic/json?label=opera%20add-on&color=blue&query=%24.tag_name&url=https%3A%2F%2Fapi.github.com%2Frepos%2Fcaret-collective%2Fdark-mode-for-outlook%2Freleases%2Flatest" alt="View on the Opera Add-ons Page" title="View on the Opera Add-ons Page"/>
     </a>
-    <img src="https://img.shields.io/github/repo-size/twocaretcat/dark-mode-for-outlook.svg" alt="Repository size" title="Repository size"/>
+    <img src="https://img.shields.io/github/repo-size/caret-collective/dark-mode-for-outlook.svg" alt="Repository size" title="Repository size"/>
     <a href="LICENSE">
-      <img src="https://img.shields.io/github/license/twocaretcat/dark-mode-for-outlook.svg" alt="Project license" title="Project license"/>
+      <img src="https://img.shields.io/github/license/caret-collective/dark-mode-for-outlook.svg" alt="Project license" title="Project license"/>
     </a>
   </p>
 

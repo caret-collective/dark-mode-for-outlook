@@ -17,14 +17,14 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/twocaretcat/dark-mode-for-outlook.git"
+		"url": "git+https://github.com/caret-collective/dark-mode-for-outlook.git"
 	},
 	"author": "John Goodliff",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/twocaretcat/dark-mode-for-outlook/issues"
+		"url": "https://github.com/caret-collective/dark-mode-for-outlook/issues"
 	},
-	"homepage": "https://github.com/twocaretcat/dark-mode-for-outlook",
+	"homepage": "https://github.com/caret-collective/dark-mode-for-outlook",
 	"engines": {
 		"node": ">=10.0.0"
 	}

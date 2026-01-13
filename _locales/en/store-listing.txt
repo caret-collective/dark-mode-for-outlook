@@ -28,7 +28,7 @@ These permissions are requested only when they are needed:
 
 🔶 Reporting Issues 🔶
 
-Translations needed! If you know another language and want to help out, please create an issue with details here: https://github.com/twocaretcat/dark-mode-for-outlook/issues.
+Translations needed! If you know another language and want to help out, please create an issue with details here: https://github.com/caret-collective/dark-mode-for-outlook/issues.
 
 If you encounter any problems while using the extension, please create an issue or create a pull request yourself to fix the issue.
 

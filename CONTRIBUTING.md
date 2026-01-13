@@ -8,7 +8,7 @@ The [Random Text Generator for Outlook](https://github.com/twocaretcat/rtg-for-o
 
 ## Reporting Issues
 
-Not a coder? See the [support resources](https://github.com/twocaretcat/.github/blob/main/docs/SUPPORT.md) for information on how to:
+Not a coder? See the [support resources](https://github.com/caret-collective/.github/blob/main/docs/SUPPORT.md) for information on how to:
 
 - request features
 - report bugs
