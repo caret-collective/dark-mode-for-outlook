@@ -1,8 +1,4 @@
 build/
-.sass-cache/
 *.css.map
-*.sass.map
-*.scss.map
 *.css
-*.zip
 node_modules/
