@@ -13,10 +13,10 @@
 	],
 	"main": "build.js",
 	"devDependencies": {
-		"archiver": "^5.3.1",
+		"archiver": "^8.0.0",
 		"fs-extra": "^11.1.1",
 		"nobs": "github:twocaretcat/NoBS",
-		"replace-in-file": "^7.0.1",
+		"replace-in-file": "^8.4.0",
 		"sass": "^1.63.6",
 		"sharp": "^0.32.1"
 	},
