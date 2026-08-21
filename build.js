@@ -6,7 +6,7 @@
 	const fs = require('fs-extra');
 	const { join } = require('path');
 	const { performance } = require('perf_hooks');
-	const NoBS = require('NoBS');
+	const NoBS = require('nobs');
 	const replace = require('replace-in-file');
 	const { renderSync } = require('sass');
 	const sharp = require('sharp');
