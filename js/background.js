@@ -25,12 +25,12 @@
 					log('Permission is granted for ' + tab.url);
 
 					chrome.tabs.insertCSS(tabId, {
-						file: 'main.css',
+						file: 'css/main.css',
 						runAt: 'document_start',
 						allFrames: true
 					}, () => {
 						chrome.tabs.insertCSS(tabId, {
-							file: 'help.css',
+							file: 'css/help.css',
 							runAt: 'document_start',
 							allFrames: true
 						}, () => {
