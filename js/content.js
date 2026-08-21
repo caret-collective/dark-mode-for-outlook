@@ -18,7 +18,7 @@
 		log('Options loaded')
 
 		const getBottomBar = (composePane) => {
-			return composePane.querySelector('div[style="background-color: rgb(250, 249, 248);"')
+			return composePane.querySelector('div[style="background-color: rgb(250, 249, 248);"]')
 		};
 
 		const styleBottomBar = (bottomBar) => {
