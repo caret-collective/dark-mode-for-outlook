@@ -145,19 +145,15 @@
 	const compileScss = async () => {
 		return new Promise(async (resolve, reject) => {
 			try {
-				scssFiles.forEach(filename => {
+				await Promise.all(scssFiles.map(filename => {
 					const css = renderSync({
 						file: filename,
 						outputStyle: 'compressed',
 						sourceMap: false
 					}).css;
 
-					fs.outputFile(join(firefoxSubfolder, filename.replace('.scss', '.css')), css, error => {
-						if (error) {
-							throw new Error(error);
-						}
-					});
-				});
+					return fs.outputFile(join(firefoxSubfolder, filename.replace('.scss', '.css')), css);
+				}));
 
 				resolve();
 			} catch (error) {
@@ -193,31 +189,28 @@
 	// Generate complete store listing descriptions from localized store-listing.txt files
 	const generateStoreListings = async () => {
 		return new Promise(async (resolve, reject) => {
-			const localeCodes = (() => fs.readdirSync(localeFolder)
-				.filter(filename => fs.statSync(join(localeFolder, filename)).isDirectory())
-			)();
+			try {
+				const localeCodes = (() => fs.readdirSync(localeFolder)
+					.filter(filename => fs.statSync(join(localeFolder, filename)).isDirectory())
+				)();
 
-			if (localeCodes !== null) {
-				localeCodes.forEach(localeCode => {
-					const text = fs.readFileSync(join(localeFolder, localeCode, storeListingTxt)).toString();
-					const textForOpera = text.replace(/(?:🔶|🔸)/g, '♦').replace(/🙂/g, ':)');
+				if (localeCodes !== null) {
+					const writeTasks = localeCodes.flatMap(localeCode => {
+						const text = fs.readFileSync(join(localeFolder, localeCode, storeListingTxt)).toString();
+						const textForOpera = text.replace(/(?:🔶|🔸)/g, '♦').replace(/🙂/g, ':)');
 
-					fs.writeFile(join(deliverablesFolder, `store-listing-${localeCode}.txt`), text, error => {
-						if (error) {
-							reject(error);
-						}
-
-						resolve();
+						return [
+							fs.writeFile(join(deliverablesFolder, `store-listing-${localeCode}.txt`), text),
+							fs.writeFile(join(deliverablesFolder, `store-listing-${localeCode}-opera.txt`), textForOpera)
+						];
 					});
 
-					fs.writeFile(join(deliverablesFolder, `store-listing-${localeCode}-opera.txt`), textForOpera, error => {
-						if (error) {
-							reject(error);
-						}
+					await Promise.all(writeTasks);
+				}
 
-						resolve();
-					});
-				});
+				resolve();
+			} catch (error) {
+				reject(error);
 			}
 		});
 	};
