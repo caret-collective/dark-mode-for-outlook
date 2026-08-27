@@ -67,11 +67,12 @@
 
 	// Customize manifest for different extension variants so that warnings aren't shown on install:
 	// - For Chromium, remove "browser_specific_settings" section
-	// - For Firefox, make background page persistent)
+	// - For Chromium, remove the Firefox background script fallback
+	// - For Firefox, remove the Chromium service worker entry
 	const customizeManifests = async () => {
 		return new Promise(async (resolve, reject) => {
 			try {
-				const chromiumResult = await replace({
+				const chromiumBrowserSettingsResult = await replace({
 					files: join(chromiumSubfolder, manifestJson),
 					from: /\t{0,4}"browser_specific_settings": ?[\s\S]{0,128}\},\s/,
 					to: '',
@@ -79,18 +80,28 @@
 					disableGlobs: true,
 				});
 
-				const firefoxResult = await replace({
-					files: join(firefoxSubfolder, manifestJson),
-					from: /"persistent": ?false/,
-					to: '"persistent": true',
+				const chromiumBackgroundScriptsResult = await replace({
+					files: join(chromiumSubfolder, manifestJson),
+					from: /\t\t"scripts": ?\[[\s\S]*?\],\n/,
+					to: '',
 					countMatches: true,
 					disableGlobs: true,
 				});
 
-				if (!chromiumResult || chromiumResult.length != 1 || !chromiumResult[0].hasChanged) {
+				const firefoxServiceWorkerResult = await replace({
+					files: join(firefoxSubfolder, manifestJson),
+					from: /,\n\t\t"service_worker": ?"js\/background\.js"/,
+					to: '',
+					countMatches: true,
+					disableGlobs: true,
+				});
+
+				if (!chromiumBrowserSettingsResult || chromiumBrowserSettingsResult.length != 1 || !chromiumBrowserSettingsResult[0].hasChanged) {
 					throw new Error(`Section "browser_specific_settings" could not be found in ${manifestJson}`);
-				} else if (!firefoxResult || firefoxResult.length != 1 || !firefoxResult[0].hasChanged) {
-					throw new Error(`Option "persistent" could not be found in ${manifestJson}`);
+				} else if (!chromiumBackgroundScriptsResult || chromiumBackgroundScriptsResult.length != 1 || !chromiumBackgroundScriptsResult[0].hasChanged) {
+					throw new Error(`Option "scripts" could not be found in ${manifestJson}`);
+				} else if (!firefoxServiceWorkerResult || firefoxServiceWorkerResult.length != 1 || !firefoxServiceWorkerResult[0].hasChanged) {
+					throw new Error(`Option "service_worker" could not be found in ${manifestJson}`);
 				}
 
 				resolve();

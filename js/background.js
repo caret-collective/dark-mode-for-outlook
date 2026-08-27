@@ -24,15 +24,19 @@
 				if (isGranted) {
 					log('Permission is granted for ' + tab.url);
 
-					chrome.tabs.insertCSS(tabId, {
-						file: 'css/main.css',
-						runAt: 'document_start',
-						allFrames: true
-					}, () => {
-						chrome.tabs.insertCSS(tabId, {
-							file: 'css/help.css',
-							runAt: 'document_start',
+					chrome.scripting.insertCSS({
+						target: {
+							tabId,
 							allFrames: true
+						},
+						files: ['css/main.css']
+					}, () => {
+						chrome.scripting.insertCSS({
+							target: {
+								tabId,
+								allFrames: true
+							},
+							files: ['css/help.css']
 						}, () => {
 							log('Injected styles');
 						});
