@@ -130,6 +130,51 @@
 	}
 }
 
+// Outlook.com 20260814008.12 title bar shell.
+#OwaTitleBar {
+	--headerBackground: var(--dmfo-darkest) !important;
+	--headerBackgroundSearch: var(--dmfo-dark) !important;
+	--headerButtonIconColor: var(--dmfo-lightest) !important;
+	--headerButtonsBackground: var(--dmfo-darkest) !important;
+	--headerButtonsBackgroundHover: var(--dmfo-dark) !important;
+	--headerButtonsBackgroundSearch: var(--dmfo-dark) !important;
+	--headerButtonsBackgroundSearchHover: var(--colorNeutralBackground1Hover, #3d3d3d) !important;
+
+	background-color: var(--dmfo-darkest) !important;
+	color: var(--dmfo-lightest) !important;
+
+	// Title bar button containers, including app launcher, settings, and account controls.
+	button {
+		--headerButtonIconColor: var(--dmfo-lightest) !important;
+
+		background-color: transparent !important;
+		color: var(--dmfo-lightest) !important;
+
+		// Title bar button hover and keyboard focus states.
+		&:hover,
+		&:focus {
+			--headerButtonIconColor: var(--dmfo-lightest) !important;
+
+			background-color: var(--dmfo-dark) !important;
+			color: var(--dmfo-lightest) !important;
+		}
+
+		// Disabled title bar buttons.
+		&:disabled,
+		&[aria-disabled='true'] {
+			background-color: transparent !important;
+			color: var(--dmfo-light) !important;
+		}
+	}
+
+	// Outlook title bar wrapper divs and the right-side account menu container.
+	>div,
+	>div>div,
+	#owa-me-control-container {
+		background-color: var(--dmfo-darkest) !important;
+	}
+}
+
 /*#endregion*/
 
 
