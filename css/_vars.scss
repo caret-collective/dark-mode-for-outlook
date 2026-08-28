@@ -3,9 +3,9 @@
 	--dmfo-lightest: #fff;
 	--dmfo-lighter: rgba(#fff, .8);
 	--dmfo-light: rgba(#fff, .5);
-	--dmfo-dark: #212121;
-	--dmfo-darker: #111;
-	--dmfo-darkest: #030303;
+	--dmfo-dark: var(--neutralPrimarySurface, #292929);
+	--dmfo-darker: var(--neutralSecondarySurface, #141414);
+	--dmfo-darkest: var(--neutralTertiarySurface, #0a0a0a);
 	--dmfo-accent: #f4b400;
 	--dmfo-legacy-compose-bg: #333;
 	--dmfo-border-radius: 4px;
