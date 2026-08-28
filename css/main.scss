@@ -130,7 +130,7 @@
 	}
 }
 
-// Outlook.com 20260814008.12 title bar shell.
+// Outlook title bar shell. Last updated for Outlook.com 20260814008.12.
 #OwaTitleBar {
 	--headerBackground: var(--dmfo-darkest) !important;
 	--headerBackgroundSearch: var(--dmfo-dark) !important;
@@ -143,14 +143,14 @@
 	background-color: var(--dmfo-darkest) !important;
 	color: var(--dmfo-lightest) !important;
 
-	// Title bar button containers, including app launcher, settings, and account controls.
+	// Title bar button containers, including app launcher, settings, and account controls. Last updated for Outlook.com 20260814008.12.
 	button {
 		--headerButtonIconColor: var(--dmfo-lightest) !important;
 
 		background-color: transparent !important;
 		color: var(--dmfo-lightest) !important;
 
-		// Title bar button hover and keyboard focus states.
+		// Title bar button hover and keyboard focus states. Last updated for Outlook.com 20260814008.12.
 		&:hover,
 		&:focus {
 			--headerButtonIconColor: var(--dmfo-lightest) !important;
@@ -159,7 +159,7 @@
 			color: var(--dmfo-lightest) !important;
 		}
 
-		// Disabled title bar buttons.
+		// Disabled title bar buttons. Last updated for Outlook.com 20260814008.12.
 		&:disabled,
 		&[aria-disabled='true'] {
 			background-color: transparent !important;
@@ -167,7 +167,7 @@
 		}
 	}
 
-	// Outlook title bar wrapper divs and the right-side account menu container.
+	// Outlook title bar wrapper divs and the right-side account menu container. Last updated for Outlook.com 20260814008.12.
 	>div,
 	>div>div,
 	#owa-me-control-container {
@@ -289,6 +289,11 @@ div[data-max-width='2400']+div {
 	display: none !important;
 }
 
+// Hide right ad blocker placeholder. Last updated for Outlook.com 20260814008.12.
+#MainModule div:has(>img[src*='/assets/ads/']) {
+	display: none !important;
+}
+
 // Hide the ad at the top of the message list in the inbox
 div[aria-label^='Message list']>div>div>div>div>div:first-child>div[data-animatable='true'] {
 	display: none !important;
@@ -301,6 +306,16 @@ div[aria-label^='Message list']>div>div>div>div>div:first-child>div[data-animata
 
 // Hide top banner ad. It may not exist, so account for this
 #app>div:first-child>div:last-child>div:first-child>div:first-child:not(:last-child):not(:nth-last-child(2)) {
+	display: none !important;
+}
+
+// Hide Outlook mobile QR promo in empty and no-selection reading pane states. Last updated for Outlook.com 20260814008.12.
+#ReadingPaneContainerId>div:has(img[src*='qr-code-dark.png']) {
+	display: none !important;
+}
+
+// Hide title bar Microsoft 365 upsell button. Last updated for Outlook.com 20260814008.12.
+#owaBuyMicrosoft365Btn_container {
 	display: none !important;
 }
 
