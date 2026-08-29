@@ -68,7 +68,7 @@ The extension can be installed for your browser here:
 
 
 ### Advanced
-If you wish to build yourself, you can download the repository, run `npm install` to install dependencies, and build the project with `npm start`. Make sure you have npm and Node.js v10.0.0 or greater installed ([how?](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)). If you have any issues running the build script, you can perform all the steps in that script manually.
+If you wish to build the extension yourself, you can download the repository, run `bun install` to install dependencies, and build the project with `bun run build` (we use [Bun](https://bun.com/), but another runtime like [Node.js](https://nodejs.org) should work too). If you have any issues running the build script, you can perform all the steps in that script manually.
 
 Next, the build directory or zip file can be loaded into your browser of choice: [Chrome](https://developer.chrome.com/extensions/getstarted#manifest) / [Firefox](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/) / [Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/part1-simple-extension#run-your-extension-locally-in-your-browser-while-developing-it-side-loading) / [Opera](https://dev.opera.com/extensions/testing/)
 
