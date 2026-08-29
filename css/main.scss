@@ -1,17 +1,5 @@
 @use 'vars.scss';
 
-@mixin searchBoxStyles {
-	background-color: var(--dmfo-dark) !important;
-	border: 0 !important;
-	border-radius: var(--dmfo-border-radius) !important;
-}
-
-@mixin darkInputFieldStyles {
-	background-color: var(--dmfo-darkest) !important;
-	border: 0 !important;
-	border-radius: var(--dmfo-border-radius) !important;
-}
-
 
 /*#region STYLES FOR LOADING/SPLASH SCREEN */
 #loadingScreen {
@@ -45,88 +33,49 @@
 
 
 /*#region MANUAL OVERRIDES FOR HARDCODED STYLES AND FOR WHEN BUILT-IN DARK MODE IS DISABLED */
-.o365cs-base {
 
-	// Settings panel header text color (dm override)
-	.o365sx-neutral-dark-font,
-	.o365sx-neutral-dark-hover-font:hover {
-		color: var(--dmfo-lightest) !important;
-	}
+// Outlook title bar shell. Last updated for Outlook.com 20260814008.12.
+#OwaTitleBar {
+	--headerBackground: var(--dmfo-darkest) !important;
+	--headerBackgroundSearch: var(--dmfo-dark) !important;
+	--headerButtonIconColor: var(--dmfo-lightest) !important;
+	--headerButtonsBackground: var(--dmfo-darkest) !important;
+	--headerButtonsBackgroundHover: var(--dmfo-dark) !important;
+	--headerButtonsBackgroundSearch: var(--dmfo-dark) !important;
+	--headerButtonsBackgroundSearchHover: var(--colorNeutralBackground1Hover, #3d3d3d) !important;
 
-	// Settings panel header close button icon color (dm override)
-	.o365sx-neutral-secondary-font,
-	.o365sx-neutral-secondary-hover-font:hover {
-		color: var(--dmfo-lightest) !important;
-	}
-
-	// Navbar settings icon (dm override)
-	.o365sx-activeButton,
-	.o365sx-activeButton:hover,
-	.o365sx-activeButton:focus {
-		color: var(--dmfo-lightest) !important;
-	}
-}
-
-// Settings panel 'View all Outlook settings' button
-#CustomFlexPane_OwaSettings>div>div>div:last-child {
-	-webkit-box-flex: none;
-	-ms-flex: none;
-	flex: none;
-	margin: auto;
-
-	>button {
-		margin-bottom: 0 !important;
-	}
-}
-
-#CustomFlexPane_OwaSettings>div>div>div:last-child>button {
-	margin-bottom: 0 !important;
-}
-
-// Navbar color
-.o365sx-navbar {
-	background-color: var(--dmfo-darker) !important;
-}
-
-// Navbar buttons
-.o365cs-base .o365sx-button,
-.o365cs-base .o365sx-waffle,
-.o365cs-base .o365sx-appName,
-.o365cs-base .o365sx-appName:visited,
-#headerButtonsRegionId>div button {
-	background-color: var(--dmfo-darker) !important;
-}
-
-.o365cs-base .o365sx-button:hover,
-.o365cs-base .o365sx-waffle:hover,
-.o365cs-base .o365sx-appName:hover,
-.o365cs-base .o365sx-appName:visited:hover,
-#headerButtonsRegionId>div:hover button {
 	background-color: var(--dmfo-darkest) !important;
-}
+	color: var(--dmfo-lightest) !important;
 
-.o365cs-base {
+	// Title bar button containers, including app launcher, settings, and account controls. Last updated for Outlook.com 20260814008.12.
+	button {
+		--headerButtonIconColor: var(--dmfo-lightest) !important;
 
-	// Popup panel background color
-	.o365sx-neutral-lighterAlt-background,
-	.o365sx-neutral-lighterAlt-hover-background:hover {
-		background-color: var(--dmfo-darker) !important;
-	}
-
-	// Popup profile panel background
-	.o365sx-neutral-foreground-background,
-	.o365sx-neutral-foreground-hover-background:hover {
-		background-color: var(--dmfo-darker) !important;
-	}
-
-	// Text/link colors
-	.o365sx-neutral-accent-font,
-	.o365sx-neutral-accent-hover-font:hover,
-	.o365sx-neutral-accent-link,
-	.o365sx-neutral-accent-link:hover,
-	.o365sx-neutral-accent-link:visited,
-	.o365sx-neutral-accent-hover-link:hover {
+		background-color: transparent !important;
 		color: var(--dmfo-lightest) !important;
+
+		// Title bar button hover and keyboard focus states. Last updated for Outlook.com 20260814008.12.
+		&:hover,
+		&:focus {
+			--headerButtonIconColor: var(--dmfo-lightest) !important;
+
+			background-color: var(--dmfo-dark) !important;
+			color: var(--dmfo-lightest) !important;
+		}
+
+		// Disabled title bar buttons. Last updated for Outlook.com 20260814008.12.
+		&:disabled,
+		&[aria-disabled='true'] {
+			background-color: transparent !important;
+			color: var(--dmfo-light) !important;
+		}
+	}
+
+	// Outlook title bar wrapper divs and the right-side account menu container. Last updated for Outlook.com 20260814008.12.
+	>div,
+	>div>div,
+	#owa-me-control-container {
+		background-color: var(--dmfo-darkest) !important;
 	}
 }
 
@@ -134,6 +83,7 @@
 
 
 /*#region MANUAL OVERRIDES FOR MESSAGE COMPOSITION HARDCODED STYLES */
+// Retained for compose surfaces that still receive hardcoded inline theme variables.
 div[aria-label='Content pane']>div:first-child>div:first-child {
 	--headerBackground: inherit !important;
 	--headerBackgroundSearch: inherit !important;
@@ -147,6 +97,7 @@ div[aria-label='Content pane']>div:first-child>div:first-child {
 	--headerBadgeBackground: inherit !important;
 	--searchBoxBackground: inherit !important;
 	--richUserContentBackground: inherit !important;
+
 	background: inherit !important;
 
 	--themeDarker: inherit !important;
@@ -186,6 +137,7 @@ div[aria-label='Content pane']>div:first-child>div:first-child {
 	--redDark: inherit !important;
 	--purple: inherit !important;
 	--flaggedMessage: inherit !important;
+
 	color: inherit !important;
 }
 
@@ -244,6 +196,11 @@ div[data-max-width='2400']+div {
 	display: none !important;
 }
 
+// Hide right ad blocker placeholder. Last updated for Outlook.com 20260814008.12.
+#MainModule div:has(>img[src*='/assets/ads/']) {
+	display: none !important;
+}
+
 // Hide the ad at the top of the message list in the inbox
 div[aria-label^='Message list']>div>div>div>div>div:first-child>div[data-animatable='true'] {
 	display: none !important;
@@ -259,380 +216,14 @@ div[aria-label^='Message list']>div>div>div>div>div:first-child>div[data-animata
 	display: none !important;
 }
 
-/*#endregion*/
-
-
-/*#region GENERAL STYLES */
-// Reduce min width
-body {
-	min-width: 700px !important;
+// Hide Outlook mobile QR promo in empty and no-selection reading pane states. Last updated for Outlook.com 20260814008.12.
+#ReadingPaneContainerId>div:has(img[src*='qr-code-dark.png']) {
+	display: none !important;
 }
 
-// Change color of button icons
-.ms-Button-icon {
-	color: var(--dmfo-lightest) !important;
-}
-
-// Styles for main search box border radius
-div[role=search],
-.ms-SearchBox {
-	@include searchBoxStyles;
-}
-
-#searchBoxColumnContainerId>div {
-	// Change background of search box container to hide borders
-	background: var(--dmfo-darker) !important;
-
-	// Style search button to match main search box
-	>button {
-		@include darkInputFieldStyles;
-		border-top-left-radius: 0 !important;
-		border-bottom-left-radius: 0 !important;
-	}
-}
-
-// Remove borders shown when search box is active
-.ms-SearchBox::after {
-	border: none !important
-}
-
-// Remove bottom borders of advanced search panel input fields
-.ms-Dropdown-title,
-.ms-Callout-main>div>div>div>div>div,
-.ms-TextField-wrapper,
-.ms-TextField-wrapper::after {
-	border-bottom: none !important;
-}
-
-// Change border-radius to match other input fields
-.ms-BasePicker-input,
-.ms-TextField-fieldGroup {
-	border-radius: var(--dmfo-border-radius) !important;
-}
-
-// Change background color, border-radius of date picker to match other advanced search panel input fields
-.ms-DatePicker {
-	@include darkInputFieldStyles;
-}
-
-// Add custom padding to advanced search panel input fields for consistency
-.ms-BasePicker-input {
-	padding-left: 8px !important;
-}
-
-// Change background color of 'Move to a different folder' menu items
-.ms-FocusZone>div[role='menuitem'] {
-	background: var(--dmfo-darker) !important;
-}
-
-// Change background color on hover for 'Move to a different folder' menu items
-.ms-FocusZone>div[role='menuitem']:hover {
-	background: var(--dmfo-darkest) !important;
-}
-
-// Override background color for 'Add a new folder' menu item
-div[title='Add a new folder']:hover {
-	background: inherit !important;
-}
-
-// Border radius for various buttons
-button.ms-Button[type='button'] {
-	border-radius: var(--dmfo-border-radius) !important;
-}
-
-// Button hover background color
-.o365cs-base .o365sx-neutral-light-hover-background:hover {
-	background: var(--dmfo-dark) !important;
-}
-
-// Hide bottom border between headings in the message list
-div[role=heading] {
-	margin-bottom: 0 !important;
-}
-
-// Hide bottom border between emails in the message list
-div[data-convid] {
-	margin-bottom: 0 !important;
-}
-
-// Message list action icon button hover color
-div[aria-label='Select a conversation']+div+div>div>button:hover>span>i {
-	color: var(--dmfo-accent) !important;
-}
-
-div[aria-label='Message list']>div:nth-child(3),
-div[aria-label='Reading Pane']>div:nth-child(2) {
-	// Hide top border for tab bar
-	border-width: 0 !important;
-
-	// Hide borders for tabs and increase border radius
-	>div {
-		border-style: none !important;
-		border-radius: var(--dmfo-border-radius) var(--dmfo-border-radius) 0 0 !important;
-	}
-}
-
-/*#endregion*/
-
-
-/*#region STYLES FOR LEFT SIDEBAR */
-// Remove left sidebar right border
-#app>div:first-child>div:nth-child(3)>div:first-child>div:first-child>div:nth-child(2) {
-	width: 0 !important;
-}
-
-// Hide bottom border under the new button on the left sidebar
-div[aria-label='Navigation pane']>div:first-child>div {
-	border-bottom: 0 !important;
-}
-
-// Hide top border of navigation bar at bottom of left sidebar
-div[role=menubar] {
-	border-top: 0 !important;
-}
-
-/*#endregion*/
-
-
-/*#region STYLES FOR COMPOSING/VIEWING MESSAGES */
-div[aria-label='Content pane'] {
-	// Content pane background
-	background: var(--dmfo-darkest) !important;
-
-	>div:first-child>div:first-child>div:nth-child(3)>div:nth-child(3) {
-		display: none !important;
-	}
-}
-
-// Hide command toolbar bottom border
-div[aria-label='Command toolbar'] {
-	border-bottom: 0 !important;
-}
-
-/*#endregion*/
-
-
-/*#region STYLES FOR NAVBAR/PANES */
-// Hide popup panel left border
-#O365fpcontainerid {
-	border-left: 0 !important;
-}
-
-
-/*#region STYLES FOR CALENDAR PANE */
-// Calendar pane background (main panel, header body background, New Event button, New Event button)
-#FlexPane_OwaTimePanel,
-#FlexPane_OwaTimePanel>div:first-child>div:first-child>div:first-child,
-#CustomFlexPane_OwaTimePanel>div>div>div,
-#CustomFlexPane_OwaTimePanel>div>div>div>div:first-child>div:nth-child(3),
-#CustomFlexPane_OwaTimePanel>div>div>div>div:first-child>div:nth-child(3)>button {
-	background: var(--dmfo-darker) !important;
-}
-
-// Calendar pane horizontal borders
-#CustomFlexPane_OwaTimePanel>div>div>div>div:first-child>div,
-#CustomFlexPane_OwaTimePanel>div>div>div>div:first-child>div:nth-child(3)>button {
-	border: 0 !important;
-}
-
-/*#endregion*/
-
-
-/*#region STYLES FOR SKYPE PANE */
-// Skype pane background color and text color
-.ms-Callout-main {
-	background-color: var(--dmfo-darker) !important;
-	color: var(--dmfo-lightest) !important;
-}
-
-// Skype pane bottom borders between messages
-.swcRecentItem {
-	border-bottom: 0 !important;
-}
-
-// Skype pane message hover background
-.swcRecentItem:hover {
-	background-color: var(--dmfo-dark) !important;
-}
-
-// Skype pane message title
-.swcRecentItem__title {
-	color: var(--dmfo-lightest) !important;
-}
-
-// Skype pane message preview text
-.swcMessagePreview__message {
-	color: #eee !important; // TODO: Change this color later
-}
-
-// Skype pane message timestamp text color
-.swcRecentItem__timestamp {
-	color: #eee !important; // TODO: Change this color later
-}
-
-// Skype pane recent button text color
-.swc.swc-recents .swcRecentsHeader__recentMenuButtonTitle {
-	color: var(--dmfo-lightest) !important;
-}
-
-// Skype pane (new chat button and search placeholder text color)
-.swc.swc-recents.minimal .swcRecentsHeader__newChatButton,
-.swc.swc-recents.minimal .swcRecentsHeader__searchInput {
-	color: var(--dmfo-lightest) !important;
-}
-
-// Skype pane button hover colors (more button, new chat/recents button, close button)
-.swc-recents .swcRecentsHeader__moreButton:hover,
-.swcRecentsHeader__secondRow button:hover {
-	background: var(--dmfo-dark) !important;
-}
-
-// Skype pane new chat/recents button hover background color
-.swcRecentsHeader__secondRow button:hover {
-	background: var(--dmfo-dark) !important;
-}
-
-// Skype pane search box background
-.swcSearchInput {
-	@include searchBoxStyles
-}
-
-// Skype pane search box icon size
-.swcIcon_size_medium {
-	font-size: 14px !important;
-	padding: .65em !important;
-}
-
-// Skype pane search box input text size
-.swcSearchInput__input {
-	font-size: 14px !important;
-}
-
-// Skype pane search box more button icon size and color
-.swcRecentsHeader__moreButton {
-	color: var(--dmfo-lightest) !important;
-	height: initial !important;
-}
-
-// Skype pane search box background color (behind actual search box element)
-.swcRecentsHeader__searchInput {
-	background-color: transparent !important;
-}
-
-// Skype pane background color
-.swc.swc-recents.dark {
-	background-color: var(--dmfo-darker) !important;
-}
-
-
-.swc.swc-recents.dark {
-
-	.swcRecentsHeader__searchInput {
-
-		// Skype pane icon color
-		.swcIcon_cancel,
-		.swcIcon_search {
-			color: var(--dmfo-lightest) !important;
-		}
-	}
-
-	// Skype pane new chat button color
-	.recentsContainer .swcRecentsHeader__newChatButton {
-		color: var(--dmfo-lightest) !important;
-	}
-
-	// Skype pane background
-	.swcRecentsHeader__searchInput {
-		background-color: initial !important;
-	}
-}
-
-.swc-bubble.list .swc-content {
-	// Skype more options pane background color
-	background-color: var(--dmfo-dark) !important;
-
-	// Remove Skype more options menu bottom border
-	ul {
-		border-bottom: none !important;
-
-		// Skype more options pane menu item background color and text color
-		li {
-			background-color: var(--dmfo-dark) !important;
-			color: var(--dmfo-lightest) !important;
-
-			// Skype more options pane menu item focus background color and text color
-			&:focus {
-				background-color: var(--dmfo-darker) !important;
-			}
-		}
-	}
-}
-
-.swc {
-
-	// Skype more options pane title color
-	.swcPageHeader__title {
-		color: var(--dmfo-lightest) !important;
-	}
-
-	// Skype more options pane back button color and border radius
-	.swcPageHeader__backButton {
-		color: var(--dmfo-lightest) !important;
-		border-radius: var(--dmfo-border-radius) !important;
-	}
-
-	// Skype more options pane back button hover background color
-	.swcPageHeader__backButton:hover {
-		background-color: var(--dmfo-dark) !important;
-	}
-}
-
-// Skype more options pane text color
-.swcMenuList__item {
-	color: var(--dmfo-lightest) !important;
-
-	// Skype more options pane hover background color
-	&:hover {
-		background-color: var(--dmfo-dark) !important;
-	}
-}
-
-/*#endregion*/
-
-
-/*#region STYLES FOR ONENOTE PANE */
-.n-searchBar-inputBox {
-	@include searchBoxStyles
-}
-
-// Onenote pane background
-html[dir] .n-side-pane {
-	background-color: var(--dmfo-darker) !important; // var(--dmfo-dark)
-}
-
-// Onenote pane search box focus icon
-.n-searchBar-inputBox-searching>.n-searchBarSearchIcon {
-	color: var(--dmfo-lightest) !important;
-}
-
-/*#endregion*/
-/*#endregion*/
-
-
-/*#region STYLES FOR MESSAGE DELETION/MOVEMENT TOOLTIP */
-div[style*='min-width: 326px'] {
-	background-color: var(--dmfo-darker) !important;
-	border-radius: var(--dmfo-border-radius) var(--dmfo-border-radius) 0 0 !important;
-
-	// Message deletion tooltip undo/close button background color
-	>div:nth-child(2)>button {
-		background-color: var(--dmfo-darker) !important;
-
-		// Message deletion tooltip undo/close button background color
-		&:hover {
-			background-color: var(--dmfo-dark) !important;
-		}
-	}
+// Hide title bar Microsoft 365 upsell button. Last updated for Outlook.com 20260814008.12.
+#owaBuyMicrosoft365Btn_container {
+	display: none !important;
 }
 
 /*#endregion*/
