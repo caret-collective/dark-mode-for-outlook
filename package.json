@@ -2,6 +2,7 @@
 	"name": "dark-mode-for-outlook",
 	"version": "3.6.0",
 	"description": "A browser extension/add-on that applies a better dark theme to Microsoft Outlook and removes ads",
+	"packageManager": "bun@1.3.14",
 	"keywords": [
 		"browser-extension",
 		"dark-mode",
@@ -21,8 +22,8 @@
 		"sharp": "^0.32.1"
 	},
 	"scripts": {
-		"start": "npm run --silent build",
-		"build": "node build.js"
+		"start": "bun run build.js",
+		"build": "bun run build.js"
 	},
 	"repository": {
 		"type": "git",
@@ -54,8 +55,5 @@
 	"bugs": {
 		"url": "https://github.com/caret-collective/dark-mode-for-outlook/issues"
 	},
-	"homepage": "https://github.com/caret-collective/dark-mode-for-outlook",
-	"engines": {
-		"node": ">=10.0.0"
-	}
+	"homepage": "https://github.com/caret-collective/dark-mode-for-outlook"
 }
