@@ -2,11 +2,11 @@
 	'use strict';
 
 	// 0-pad a number to 2 digits
-	const pad = (num) => {
+	const pad = (num: number): string => {
 		return num.toString().padStart(2, '0');
 	}
 
-	const log = (msg) => {
+	const log = (msg: string) => {
 		const d = new Date();
 
 		console.debug('[' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + '.' + pad(d.getSeconds()) + '] DMFO: ' + msg);
@@ -16,7 +16,7 @@
 
 	chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
 		// Url property is only present when we have the 'tabs' permission
-		if ('url' in tab && 'status' in changeInfo && changeInfo.status === 'loading') {
+		if (tab.url && 'status' in changeInfo && changeInfo.status === 'loading') {
 			chrome.permissions.contains({
 				permissions: [],
 				origins: [tab.url]
