@@ -68,10 +68,15 @@ The extension can be installed for your browser here:
 
 
 ### Advanced
-If you wish to build the extension yourself, you can download the repository, run `bun install` to install dependencies, and build the project with `bun run build` (we use [Bun](https://bun.com/), but another runtime like [Node.js](https://nodejs.org) should work too). If you have any issues running the build script, you can perform all the steps in that script manually.
+If you wish to build the extension yourself:
 
-Next, the build directory or zip file can be loaded into your browser of choice: [Chrome](https://developer.chrome.com/extensions/getstarted#manifest) / [Firefox](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/) / [Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/part1-simple-extension#run-your-extension-locally-in-your-browser-while-developing-it-side-loading) / [Opera](https://dev.opera.com/extensions/testing/)
+1. Install [Bun](https://bun.com/)
+2. Clone the repository
+3. Run `bun install` to install dependencies
+4. Build the project with `bun run build`
+5. Load the build directory or zip file into your browser of choice: [Chrome](https://developer.chrome.com/extensions/getstarted#manifest) / [Firefox](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/) / [Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/part1-simple-extension#run-your-extension-locally-in-your-browser-while-developing-it-side-loading) / [Opera](https://dev.opera.com/extensions/testing/)
 
+If you have any issues running the build script, you can perform all the steps in that script manually instead.
 
 ## 🕹️ Usage
 Just install the extension and you should be good to go! Styles are automatically applied to any page on the following domains:
