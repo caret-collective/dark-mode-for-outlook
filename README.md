@@ -1,6 +1,6 @@
 <!-- Project Header -->
 <div align="center">
-  <img class="projectLogo" src="img/icon.svg" alt="Project logo" title="Project logo" width="256">
+  <img class="projectLogo" src="src/images/icon.svg" alt="Project logo" title="Project logo" width="256">
 
   <h1 class="projectName">Dark Mode for Outlook</h1>
 
@@ -49,8 +49,8 @@ A browser extension/add-on that applies a better dark theme to Microsoft Outlook
 ### Screenshots
 Desktop site | &#8291;
 :-:|:-:
-![Screenshot 1](img/screenshots/screenshot_inbox.png) | ![Screenshot 2](img/screenshots/screenshot_appswitcher.png)
-![Screenshot 3](img/screenshots/screenshot_compose_dark.png) | ![Screenshot 4](img/screenshots/screenshot_compose_light.png)
+![Screenshot 1](docs/screenshots/screenshot_inbox.png) | ![Screenshot 2](docs/screenshots/screenshot_appswitcher.png)
+![Screenshot 3](docs/screenshots/screenshot_compose_dark.png) | ![Screenshot 4](docs/screenshots/screenshot_compose_light.png)
 
 
 ## 📦 Installation
@@ -118,7 +118,7 @@ These permissions are requested only when they are needed:
 - **"http(s)://*/":** Access to 'any site' is required if you are using the [Custom Domains](#Custom%20Domains) feature. This is so we can apply styles to any domain you specify. Note that the extension does not have access to all sites. It will only request permissions for the specific custom domains you add
 
 ## 🤝 Contributing
-Pull requests, bug reports, translations, and other kinds of contributions are greatly appreciated. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more details. By contributing code, you agree to license your contributions under the terms of the [LICENSE]((LICENSE)).
+Pull requests, bug reports, translations, and other kinds of contributions are greatly appreciated. Please see [CONTRIBUTING.md](docs/CONTRIBUTING.md) for more details. By contributing code, you agree to license your contributions under the terms of the [LICENSE](LICENSE).
 
 ### Reporting Issues
 If you encounter any problems while using the extension, please create an issue [here][issues_link] or create a pull request yourself to fix the issue.
@@ -127,7 +127,7 @@ I try to fix the extension as soon as possible when Outlook makes breaking chang
 
 
 ## 🧾 License
-This project is licensed under the [MIT License](LICENSE). This project includes various resources which carry their own copyright notices and license terms. See [LICENSE-THIRD-PARTY.md](LICENSE-THIRD-PARTY.md) for more details.
+This project is licensed under the [MIT License](LICENSE). This project includes various resources which carry their own copyright notices and license terms. See [LICENSE-THIRD-PARTY.md](docs/LICENSE-THIRD-PARTY.md) for more details.
 
 Outlook is a trademark of Microsoft and this project is not affiliated with or endorsed by Microsoft in any way.
 

@@ -5,11 +5,11 @@
 	"version": "3.6",
 	"default_locale": "en",
 	"icons": {
-		"128": "img/128.png",
-		"64": "img/64.png",
-		"48": "img/48.png",
-		"32": "img/32.png",
-		"16": "img/16.png"
+		"128": "images/128.png",
+		"64": "images/64.png",
+		"48": "images/48.png",
+		"32": "images/32.png",
+		"16": "images/16.png"
 	},
 	"options_ui": {
 		"page": "options.html",
@@ -24,10 +24,10 @@
 				"*://support.office.live.com/*"
 			],
 			"css": [
-				"css/main.css"
+				"styles/main.css"
 			],
 			"js": [
-				"js/content.js"
+				"scripts/content.js"
 			],
 			"run_at": "document_start"
 		},
@@ -36,7 +36,7 @@
 				"*://support.office.live.com/*"
 			],
 			"css": [
-				"css/help.css"
+				"styles/help.css"
 			],
 			"run_at": "document_start",
 			"all_frames": true
@@ -44,9 +44,9 @@
 	],
 	"background": {
 		"scripts": [
-			"js/background.js"
+			"scripts/background.js"
 		],
-		"service_worker": "js/background.js"
+		"service_worker": "scripts/background.js"
 	},
 	"permissions": [
 		"scripting",
@@ -61,7 +61,7 @@
 	"web_accessible_resources": [
 		{
 			"resources": [
-				"css/compose.css"
+				"styles/compose.css"
 			],
 			"matches": [
 				"*://outlook.live.com/*",
