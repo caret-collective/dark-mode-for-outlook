@@ -32,16 +32,15 @@
   <br/>
 </div>
 
-
-> [!IMPORTANT]
-> Google is removing support for Manifest v2 extensions [under the guise of improving security/privacy/performance](https://www.eff.org/deeplinks/2021/12/chrome-users-beware-manifest-v3-deceitful-and-threatening) for users of their browser. Ironically, this will affect your ability to use extensions like ad-blockers and tracker blockers that enhance your experience and keep you safe online.
+> [!NOTE]
+> Google has removed support for Manifest v2 extensions [under the guise of improving security/privacy/performance](https://www.eff.org/deeplinks/2021/12/chrome-users-beware-manifest-v3-deceitful-and-threatening) for users of their browser. Ironically, this will affect your ability to use extensions like ad-blockers and tracker blockers that enhance your experience and keep you safe online.
 >
-> This extension should not be affected, and I will add Manifest v3 support to it at some point.
+> This extension has been updated to support Manifest v3 and **is not affected**.
 >
-> That being said, if you are currently using Google Chrome, I **strongly** recommend switching to another browser that respects your privacy and is not run by the world's largest advertising company. I would recommend:
+> That being said, if you are currently using Google Chrome, I strongly recommend switching to another browser that respects your privacy and isn't run by the world's largest advertising company. I would recommend:
+>
 > - [Firefox] or [Librewolf], if you want a powerful, free, open-source browser
 > - [Brave], if you want a similar experience to Chrome without all the negatives
-
 
 ## 👋 About
 A browser extension/add-on that applies a better dark theme to Microsoft Outlook and removes ads. Available for Chrome, Firefox, Edge, and Opera, with partial support for Firefox mobile!
