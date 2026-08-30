@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { performance } from 'node:perf_hooks';
 import NoBS from 'nobs';
 import replace from 'replace-in-file';
-import { renderSync } from 'sass';
+import { compile } from 'sass';
 import sharp from 'sharp';
 
 type BuildTask = () => Promise<void>;
@@ -119,9 +119,8 @@ const generateIcons = async (): Promise<void> => {
 // Compile SCSS to CSS
 const compileScss = async (): Promise<void> => {
 	await Promise.all(scssFiles.map(filename => {
-		const css = renderSync({
-			file: join(sourceFolder, stylesFolder, filename),
-			outputStyle: 'compressed',
+		const css = compile(join(sourceFolder, stylesFolder, filename), {
+			style: 'compressed',
 			sourceMap: false,
 		}).css;
 
