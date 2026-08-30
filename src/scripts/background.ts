@@ -29,14 +29,14 @@
 							tabId,
 							allFrames: true
 						},
-						files: ['css/main.css']
+						files: ['styles/main.css']
 					}, () => {
 						chrome.scripting.insertCSS({
 							target: {
 								tabId,
 								allFrames: true
 							},
-							files: ['css/help.css']
+							files: ['styles/help.css']
 						}, () => {
 							log('Injected styles');
 						});
