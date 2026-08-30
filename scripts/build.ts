@@ -18,15 +18,25 @@ const buildFolder = 'build';
 const firefoxSubfolder = join(buildFolder, 'firefox');
 const chromiumSubfolder = join(buildFolder, 'chromium');
 const deliverablesFolder = join(buildFolder, 'deliverables');
+const sourceFolder = 'src';
+const imagesFolder = 'images';
 const localeFolder = '_locales';
-const imgFolder = 'img';
 const iconFilename = 'icon.svg';
+const scriptsFolder = 'scripts';
+const stylesFolder = 'styles';
 const packageJson = 'package.json';
 const manifestJson = 'manifest.json';
 const storeListingTxt = 'store-listing.txt';
-const scssFiles = ['css/main.scss', 'css/help.scss', 'css/compose.scss'];
-const tsFiles = ['js/options.ts', 'js/background.ts', 'js/content.ts'];
-const filesToCopy = ['README.md', 'LICENSE', manifestJson, 'options.html', localeFolder];
+const scssFiles = ['main.scss', 'help.scss', 'compose.scss'];
+const tsFiles = ['options.ts', 'background.ts', 'content.ts'];
+const filesToCopy = [
+	['README.md', 'README.md'],
+	['LICENSE', 'LICENSE'],
+	[join('docs', 'LICENSE-THIRD-PARTY.md'), 'LICENSE-THIRD-PARTY.md'],
+	[join(sourceFolder, manifestJson), manifestJson],
+	[join(sourceFolder, 'options.html'), 'options.html'],
+	[join(sourceFolder, localeFolder), localeFolder],
+];
 
 // Runtime vars
 let extensionName = '';
@@ -69,7 +79,7 @@ const customizeManifests = async (): Promise<void> => {
 
 	const firefoxServiceWorkerResult = await replace({
 		files: join(firefoxSubfolder, manifestJson),
-		from: /,\n\t\t"service_worker": ?"js\/background\.js"/,
+		from: /,\n\t\t"service_worker": ?"scripts\/background\.js"/,
 		to: '',
 		countMatches: true,
 		disableGlobs: true,
@@ -91,18 +101,18 @@ const duplicateBuildFolder = async (): Promise<void> => {
 
 // Generate extension icons in multiple sizes
 const generateIcons = async (): Promise<void> => {
-	const outputImgFolder = join(firefoxSubfolder, imgFolder);
+	const outputImagesFolder = join(firefoxSubfolder, imagesFolder);
 
-	await fs.ensureDir(outputImgFolder);
+	await fs.ensureDir(outputImagesFolder);
 	await Promise.all([128, 64, 48, 32, 16].map(size => {
-		return sharp(join(imgFolder, iconFilename))
+		return sharp(join(sourceFolder, imagesFolder, iconFilename))
 			.resize(size, size)
 			.png({
 				compressionLevel: 9,
 				adaptiveFiltering: true,
 				palette: true,
 			})
-			.toFile(join(outputImgFolder, `${size}.png`));
+			.toFile(join(outputImagesFolder, `${size}.png`));
 	}));
 };
 
@@ -110,20 +120,20 @@ const generateIcons = async (): Promise<void> => {
 const compileScss = async (): Promise<void> => {
 	await Promise.all(scssFiles.map(filename => {
 		const css = renderSync({
-			file: filename,
+			file: join(sourceFolder, stylesFolder, filename),
 			outputStyle: 'compressed',
 			sourceMap: false,
 		}).css;
 
-		return fs.outputFile(join(firefoxSubfolder, filename.replace('.scss', '.css')), css);
+		return fs.outputFile(join(firefoxSubfolder, stylesFolder, filename.replace('.scss', '.css')), css);
 	}));
 };
 
 // Compile extension TypeScript entrypoints to the JS filenames referenced by the manifest
 const compileTypescript = async (): Promise<void> => {
 	const result = await Bun.build({
-		entrypoints: tsFiles,
-		outdir: join(firefoxSubfolder, 'js'),
+		entrypoints: tsFiles.map(filename => join(sourceFolder, scriptsFolder, filename)),
+		outdir: join(firefoxSubfolder, scriptsFolder),
 		target: 'browser',
 		format: 'iife',
 		naming: '[name].[ext]',
@@ -136,8 +146,8 @@ const compileTypescript = async (): Promise<void> => {
 
 // Copy source files to build folder
 const copyFiles = async (): Promise<void> => {
-	const copyTasks = filesToCopy.map(filename => {
-		return fs.copy(filename, join(firefoxSubfolder, filename), {
+	const copyTasks = filesToCopy.map(([source, destination]) => {
+		return fs.copy(source, join(firefoxSubfolder, destination), {
 			filter: file => {
 				// Filter out store-listing.txt files because we will generate these later
 				return !file.includes(storeListingTxt);
@@ -150,11 +160,12 @@ const copyFiles = async (): Promise<void> => {
 
 // Generate complete store listing descriptions from localized store-listing.txt files
 const generateStoreListings = async (): Promise<void> => {
-	const localeCodes = fs.readdirSync(localeFolder)
-		.filter(filename => fs.statSync(join(localeFolder, filename)).isDirectory());
+	const sourceLocaleFolder = join(sourceFolder, localeFolder);
+	const localeCodes = fs.readdirSync(sourceLocaleFolder)
+		.filter(filename => fs.statSync(join(sourceLocaleFolder, filename)).isDirectory());
 
 	const writeTasks = localeCodes.flatMap(localeCode => {
-		const text = fs.readFileSync(join(localeFolder, localeCode, storeListingTxt)).toString();
+		const text = fs.readFileSync(join(sourceLocaleFolder, localeCode, storeListingTxt)).toString();
 		const textForOpera = text.replace(/(?:🔶|🔸)/g, '♦').replace(/🙂/g, ':)');
 
 		return [
