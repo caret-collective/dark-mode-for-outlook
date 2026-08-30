@@ -1,6 +1,6 @@
 <!-- Project Header -->
 <div align="center">
-  <img class="projectLogo" src="img/icon.svg" alt="Project logo" title="Project logo" width="256">
+  <img class="projectLogo" src="src/images/icon.svg" alt="Project logo" title="Project logo" width="256">
 
   <h1 class="projectName">Dark Mode for Outlook</h1>
 
@@ -32,16 +32,15 @@
   <br/>
 </div>
 
-
-> [!IMPORTANT]
-> Google is removing support for Manifest v2 extensions [under the guise of improving security/privacy/performance](https://www.eff.org/deeplinks/2021/12/chrome-users-beware-manifest-v3-deceitful-and-threatening) for users of their browser. Ironically, this will affect your ability to use extensions like ad-blockers and tracker blockers that enhance your experience and keep you safe online.
+> [!NOTE]
+> Google has removed support for Manifest v2 extensions [under the guise of improving security/privacy/performance](https://www.eff.org/deeplinks/2021/12/chrome-users-beware-manifest-v3-deceitful-and-threatening) for users of their browser. Ironically, this will affect your ability to use extensions like ad-blockers and tracker blockers that enhance your experience and keep you safe online.
 >
-> This extension should not be affected, and I will add Manifest v3 support to it at some point.
+> This extension has been updated to support Manifest v3 and **is not affected**.
 >
-> That being said, if you are currently using Google Chrome, I **strongly** recommend switching to another browser that respects your privacy and is not run by the world's largest advertising company. I would recommend:
+> That being said, if you are currently using Google Chrome, I strongly recommend switching to another browser that respects your privacy and isn't run by the world's largest advertising company. I would recommend:
+>
 > - [Firefox] or [Librewolf], if you want a powerful, free, open-source browser
 > - [Brave], if you want a similar experience to Chrome without all the negatives
-
 
 ## 👋 About
 A browser extension/add-on that applies a better dark theme to Microsoft Outlook and removes ads. Available for Chrome, Firefox, Edge, and Opera, with partial support for Firefox mobile!
@@ -49,8 +48,8 @@ A browser extension/add-on that applies a better dark theme to Microsoft Outlook
 ### Screenshots
 Desktop site | &#8291;
 :-:|:-:
-![Screenshot 1](img/screenshots/screenshot_inbox.png) | ![Screenshot 2](img/screenshots/screenshot_appswitcher.png)
-![Screenshot 3](img/screenshots/screenshot_compose_dark.png) | ![Screenshot 4](img/screenshots/screenshot_compose_light.png)
+![Screenshot 1](docs/screenshots/screenshot_inbox.png) | ![Screenshot 2](docs/screenshots/screenshot_appswitcher.png)
+![Screenshot 3](docs/screenshots/screenshot_compose_dark.png) | ![Screenshot 4](docs/screenshots/screenshot_compose_light.png)
 
 
 ## 📦 Installation
@@ -68,10 +67,15 @@ The extension can be installed for your browser here:
 
 
 ### Advanced
-If you wish to build yourself, you can download the repository, run `npm install` to install dependencies, and build the project with `npm start`. Make sure you have npm and Node.js v10.0.0 or greater installed ([how?](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)). If you have any issues running the build script, you can perform all the steps in that script manually.
+If you wish to build the extension yourself:
 
-Next, the build directory or zip file can be loaded into your browser of choice: [Chrome](https://developer.chrome.com/extensions/getstarted#manifest) / [Firefox](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/) / [Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/part1-simple-extension#run-your-extension-locally-in-your-browser-while-developing-it-side-loading) / [Opera](https://dev.opera.com/extensions/testing/)
+1. Install [Bun](https://bun.com/)
+2. Clone the repository
+3. Run `bun install` to install dependencies
+4. Build the project with `bun run build`
+5. Load the build directory or zip file into your browser of choice: [Chrome](https://developer.chrome.com/extensions/getstarted#manifest) / [Firefox](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox/) / [Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/part1-simple-extension#run-your-extension-locally-in-your-browser-while-developing-it-side-loading) / [Opera](https://dev.opera.com/extensions/testing/)
 
+If you have any issues running the build script, you can perform all the steps in that script manually instead.
 
 ## 🕹️ Usage
 Just install the extension and you should be good to go! Styles are automatically applied to any page on the following domains:
@@ -113,7 +117,7 @@ These permissions are requested only when they are needed:
 - **"http(s)://*/":** Access to 'any site' is required if you are using the [Custom Domains](#Custom%20Domains) feature. This is so we can apply styles to any domain you specify. Note that the extension does not have access to all sites. It will only request permissions for the specific custom domains you add
 
 ## 🤝 Contributing
-Pull requests, bug reports, translations, and other kinds of contributions are greatly appreciated. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more details. By contributing code, you agree to license your contributions under the terms of the [LICENSE]((LICENSE)).
+Pull requests, bug reports, translations, and other kinds of contributions are greatly appreciated. Please see [CONTRIBUTING.md](docs/CONTRIBUTING.md) for more details. By contributing code, you agree to license your contributions under the terms of the [LICENSE](LICENSE).
 
 ### Reporting Issues
 If you encounter any problems while using the extension, please create an issue [here][issues_link] or create a pull request yourself to fix the issue.
@@ -122,7 +126,7 @@ I try to fix the extension as soon as possible when Outlook makes breaking chang
 
 
 ## 🧾 License
-This project is licensed under the [MIT License](LICENSE). This project includes various resources which carry their own copyright notices and license terms. See [LICENSE-THIRD-PARTY.md](LICENSE-THIRD-PARTY.md) for more details.
+This project is licensed under the [MIT License](LICENSE). This project includes various resources which carry their own copyright notices and license terms. See [LICENSE-THIRD-PARTY.md](docs/LICENSE-THIRD-PARTY.md) for more details.
 
 Outlook is a trademark of Microsoft and this project is not affiliated with or endorsed by Microsoft in any way.
 

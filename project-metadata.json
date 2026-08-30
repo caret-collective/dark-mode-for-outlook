@@ -2,7 +2,7 @@
   "$schema": "https://johng.io/schema/project-metadata.json",
   "name": "Dark Mode for Outlook",
   "background": "A browser extension that removes the ad sidebar and applies a dark theme to Microsoft's Outlook.com. Created as a personal project to improve the distracting UI of Outlook and released on various add-on stores for others to use. The project has over 1500 users.",
-	"logoPath": "img/icon.svg",
+	"logoPath": "src/images/icon.svg",
 	"category": "Extension",
 	"subcategory": "Browser",
   "schema": {

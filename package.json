@@ -1,7 +1,8 @@
 {
 	"name": "dark-mode-for-outlook",
-	"version": "3.6.0",
+	"version": "4.0.0",
 	"description": "A browser extension/add-on that applies a better dark theme to Microsoft Outlook and removes ads",
+	"packageManager": "bun@1.4.0",
 	"keywords": [
 		"browser-extension",
 		"dark-mode",
@@ -11,18 +12,25 @@
 		"sass",
 		"webextension"
 	],
-	"main": "build.js",
+	"main": "scripts/build.ts",
 	"devDependencies": {
-		"archiver": "^5.3.1",
-		"fs-extra": "^11.1.1",
+		"@types/archiver": "^8.0.0",
+		"@types/bun": "^1.4.0",
+		"@types/chrome": "^0.2.7",
+		"@types/fs-extra": "^11.0.4",
+		"@types/node": "^26.4.0",
+		"archiver": "^5.3.2",
+		"fs-extra": "^11.4.0",
 		"nobs": "github:twocaretcat/NoBS",
-		"replace-in-file": "^7.0.1",
-		"sass": "^1.63.6",
-		"sharp": "^0.32.1"
+		"replace-in-file": "^7.2.0",
+		"sass": "^1.103.1",
+		"sharp": "^0.32.6",
+		"typescript": "^7.0.2"
 	},
 	"scripts": {
-		"start": "npm run --silent build",
-		"build": "node build.js"
+		"start": "bun run build",
+		"check": "tsc --noEmit",
+		"build": "bun run check && bun run scripts/build.ts"
 	},
 	"repository": {
 		"type": "git",
@@ -54,8 +62,5 @@
 	"bugs": {
 		"url": "https://github.com/caret-collective/dark-mode-for-outlook/issues"
 	},
-	"homepage": "https://github.com/caret-collective/dark-mode-for-outlook",
-	"engines": {
-		"node": ">=10.0.0"
-	}
+	"homepage": "https://github.com/caret-collective/dark-mode-for-outlook"
 }

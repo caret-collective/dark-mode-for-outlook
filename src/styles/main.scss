@@ -1,0 +1,450 @@
+@use 'vars.scss';
+
+
+/*#region STYLES FOR LOADING/SPLASH SCREEN */
+#loadingScreen {
+	background-color: var(--dmfo-darker) !important;
+
+	>#loadingLogo {
+		display: none !important;
+	}
+
+	>#MSLogo {
+		display: none !important;
+	}
+
+	>#loadingSpinner {
+		opacity: 1 !important;
+		position: fixed !important;
+		top: calc(50% - 40px) !important;
+		left: calc(50% - 40px) !important;
+
+		>g>g>circle {
+			stroke: var(--dmfo-lightest) !important;
+		}
+	}
+}
+
+#spinnerCircle {
+	stroke: transparent !important;
+}
+
+/*#endregion*/
+
+
+/*#region MANUAL OVERRIDES FOR HARDCODED STYLES AND FOR WHEN BUILT-IN DARK MODE IS DISABLED */
+
+// Outlook title bar shell. Last updated for Outlook.com 20260814008.12.
+#OwaTitleBar {
+	--headerBackground: var(--dmfo-darkest) !important;
+	--headerBackgroundSearch: var(--dmfo-dark) !important;
+	--headerButtonIconColor: var(--dmfo-lightest) !important;
+	--headerButtonsBackground: var(--dmfo-darkest) !important;
+	--headerButtonsBackgroundHover: var(--dmfo-dark) !important;
+	--headerButtonsBackgroundSearch: var(--dmfo-dark) !important;
+	--headerButtonsBackgroundSearchHover: var(--colorNeutralBackground1Hover, #3d3d3d) !important;
+
+	background-color: var(--dmfo-darkest) !important;
+	color: var(--dmfo-lightest) !important;
+
+	// Title bar button containers, including app launcher, settings, and account controls. Last updated for Outlook.com 20260814008.12.
+	button {
+		--headerButtonIconColor: var(--dmfo-lightest) !important;
+
+		background-color: transparent !important;
+		color: var(--dmfo-lightest) !important;
+
+		// Title bar button hover and keyboard focus states. Last updated for Outlook.com 20260814008.12.
+		&:hover,
+		&:focus {
+			--headerButtonIconColor: var(--dmfo-lightest) !important;
+
+			background-color: var(--dmfo-dark) !important;
+			color: var(--dmfo-lightest) !important;
+		}
+
+		// Disabled title bar buttons. Last updated for Outlook.com 20260814008.12.
+		&:disabled,
+		&[aria-disabled='true'] {
+			background-color: transparent !important;
+			color: var(--dmfo-light) !important;
+		}
+	}
+
+	// Outlook title bar wrapper divs and the right-side account menu container. Last updated for Outlook.com 20260814008.12.
+	>div,
+	>div>div,
+	#owa-me-control-container {
+		background-color: var(--dmfo-darkest) !important;
+	}
+}
+
+/*#endregion*/
+
+
+/*#region MANUAL OVERRIDES FOR MESSAGE COMPOSITION HARDCODED STYLES */
+// Retained for compose surfaces that still receive hardcoded inline theme variables.
+div[aria-label='Content pane']>div:first-child>div:first-child {
+	--headerBackground: inherit !important;
+	--headerBackgroundSearch: inherit !important;
+	--headerSearchBoxBackground: inherit !important;
+	--headerSearchButtonBackground: inherit !important;
+	--headerSearchButtonBackgroundHover: inherit !important;
+	--headerButtonsBackground: inherit !important;
+	--headerButtonsBackgroundHover: inherit !important;
+	--headerButtonsBackgroundSearch: inherit !important;
+	--headerButtonsBackgroundSearchHover: inherit !important;
+	--headerBadgeBackground: inherit !important;
+	--searchBoxBackground: inherit !important;
+	--richUserContentBackground: inherit !important;
+
+	background: inherit !important;
+
+	--themeDarker: inherit !important;
+	--themeDark: inherit !important;
+	--themeDarkAlt: inherit !important;
+	--themePrimary: inherit !important;
+	--themeSecondary: inherit !important;
+	--themeTertiary: inherit !important;
+	--themeLight: inherit !important;
+	--themeLighter: inherit !important;
+	--themeLighterAlt: inherit !important;
+	--headerBrandText: inherit !important;
+	--headerTextIcons: inherit !important;
+	--headerSearchBoxIcon: inherit !important;
+	--headerSearchPlaceholderText: inherit !important;
+	--headerSearchButtonIcon: inherit !important;
+	--headerSearchFilters: inherit !important;
+	--headerSearchFiltersHover: inherit !important;
+	--headerBadgeText: inherit !important;
+	--headerSearchIcon: inherit !important;
+	--black: inherit !important;
+	--blackTranslucent40: inherit !important;
+	--white: inherit !important;
+	--whiteTranslucent40: inherit !important;
+	--whiteTranslucent90: inherit !important;
+	--neutralDark: inherit !important;
+	--neutralPrimary: inherit !important;
+	--neutralPrimaryAlt: inherit !important;
+	--neutralSecondary: inherit !important;
+	--neutralTertiary: inherit !important;
+	--neutralTertiaryAlt: inherit !important;
+	--neutralQuaternary: inherit !important;
+	--neutralQuaternaryAlt: inherit !important;
+	--neutralLight: inherit !important;
+	--neutralLighter: inherit !important;
+	--neutralLighterAlt: inherit !important;
+	--redDark: inherit !important;
+	--purple: inherit !important;
+	--flaggedMessage: inherit !important;
+
+	color: inherit !important;
+}
+
+// Message body background color
+div[aria-label='Message body'] {
+	--headerBackground: initial !important;
+	--headerBackgroundSearch: initial !important;
+	--headerSearchBoxBackground: initial !important;
+	--headerSearchButtonBackground: initial !important;
+	--headerSearchButtonBackgroundHover: initial !important;
+	--headerButtonsBackground: initial !important;
+	--headerButtonsBackgroundHover: initial !important;
+	--headerButtonsBackgroundSearch: initial !important;
+	--headerButtonsBackgroundSearchHover: initial !important;
+	--headerBadgeBackground: initial !important;
+	--searchBoxBackground: initial !important;
+	--richUserContentBackground: initial !important;
+}
+
+#ReadingPaneContainerId>div:first-child:not([class])>div:first-child:not([class])>div:first-child[class] {
+
+	// Compose pane background color (when dark theme is applied)
+	>div:first-child:not([class])>div:nth-child(2) {
+		background: var(--dmfo-legacy-compose-bg) !important;
+	}
+
+	// Compose pane background color (when light theme is applied)
+	>div:first-child[class]>div:nth-child(2) {
+		background: var(--white) !important;
+	}
+}
+
+// Remove box shadow from message body container
+.wide-content-host>div:first-child>div[class]:first-child {
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+// More send options button color, compose background style toggle
+button[aria-label='More send options']>span>i,
+button[aria-label='View with a dark background']>span>i {
+	color: var(--dmfo-darkest) !important;
+}
+
+/*#endregion*/
+
+
+/*#region AD HIDING FOR OUTLOOK PERSONAL */
+// Hide ad at bottom of left sidebar
+div[aria-label='Navigation pane']>div:last-child>div>div:nth-child(2):not([role='menubar']) {
+	display: none !important;
+}
+
+// Hide right ad sidebar (shown when screen is wide)
+div[data-max-width='2400']+div {
+	display: none !important;
+}
+
+// Hide right ad blocker placeholder. Last updated for Outlook.com 20260814008.12.
+#MainModule div:has(>img[src*='/assets/ads/']) {
+	display: none !important;
+}
+
+// Hide the ad at the top of the message list in the inbox
+div[aria-label^='Message list']>div>div>div>div>div:first-child>div[data-animatable='true'] {
+	display: none !important;
+}
+
+// Hide floating ad at bottom of message list (shown when screen is narrow)
+#MainModule+div {
+	display: none !important;
+}
+
+// Hide top banner ad. It may not exist, so account for this
+#app>div:first-child>div:last-child>div:first-child>div:first-child:not(:last-child):not(:nth-last-child(2)) {
+	display: none !important;
+}
+
+// Hide Outlook mobile QR promo in empty and no-selection reading pane states. Last updated for Outlook.com 20260814008.12.
+#ReadingPaneContainerId>div:has(img[src*='qr-code-dark.png']) {
+	display: none !important;
+}
+
+// Hide title bar Microsoft 365 upsell button. Last updated for Outlook.com 20260814008.12.
+#owaBuyMicrosoft365Btn_container {
+	display: none !important;
+}
+
+/*#endregion*/
+
+
+
+
+/*#region STYLES FOR MOBILE SITE (FOR FIREFOX MOBILE) */
+/*#region GENERAL STYLES */
+// Loading/splash screen logo background color
+.logoCont>svg>g>rect {
+	fill: transparent !important;
+}
+
+// Loading/splash screen progress bar background color
+.loader {
+	background-color: transparent !important;
+
+	// Loading/splash screen progress bar fill color
+	&::before {
+		background-color: var(--dmfo-lightest) !important;
+	}
+}
+
+// Remove top ad
+main>div:first-child>div:first-child>div:first-child {
+	display: none !important;
+}
+
+// Header background color (email, calendar)
+#app>div:first-child {
+
+	>div:first-child>header,
+	>header {
+		background: var(--dmfo-darker) !important;
+	}
+}
+
+
+// Change action bar background color and remove top border (email, calendar)
+#app>div:first-child>div:first-child>nav,
+#app>div:first-child>nav,
+#app>nav {
+	background: var(--dmfo-darker) !important;
+	border-top: 0 !important;
+}
+
+// Change action bar selected icon color (email, people)
+#app>div:first-child>div:first-child>nav>span[aria-label*=Selected],
+#app>nav>span[aria-label*=Selected] {
+	color: var(--dmfo-lightest) !important;
+}
+
+// Change action bar selected icon color (calendar)
+#app>div:first-child>nav>span[aria-label*=Selected]>div>svg>g>* {
+	fill: var(--dmfo-lightest) !important;
+}
+
+// Sidebar background/text color
+#FolderPaneDivId>div[role=navigation] {
+	background: var(--dmfo-darker) !important;
+	color: var(--dmfo-lightest) !important;
+
+	// Sidebar header text color and border
+	>div:first-child {
+		border-bottom: none !important;
+
+		>div:first-child {
+
+			>i,
+			>div {
+				color: var(--dmfo-lightest) !important;
+			}
+		}
+	}
+
+	// Remove borders from all sidebar sections
+	>div {
+		border-top: none !important;
+
+		// Background color of selected list item
+		>div[class*=_3Q] {
+			background-color: var(--themeLight) !important;
+			color: var(--dmfo-lightest) !important;
+		}
+
+		// Folder unread items badge background/text color
+		>div>label[for*=Folder] {
+			background-color: var(--dmfo-dark) !important;
+			color: var(--dmfo-lightest) !important;
+		}
+	}
+
+	// Sidebar footer text color
+	>div:last-child {
+
+		div[role=link],
+		div[role=button] {
+			color: var(--dmfo-lightest) !important;
+		}
+	}
+}
+
+/*#endregion*/
+
+
+/*#region STYLES FOR EMAIL LIST */
+// Move messages up to fill the space of the hidden ad
+main>div:first-child>div:first-child>div {
+	margin-top: -93px !important;
+}
+
+// Message background color
+div[role=group]>article {
+	background: var(--dmfo-darkest) !important;
+
+	// Message unread indicator background color
+	&::before {
+		background: var(--dmfo-lightest) !important;
+	}
+
+	>div:last-child>div:first-child {
+
+		// Message title text color
+		>div:first-child>div:first-child {
+			color: var(--dmfo-lightest) !important;
+		}
+
+		// Message subject text color
+		>div:nth-child(2)>h2:first-child {
+			color: var(--dmfo-lighter) !important;
+		}
+
+		// Message preview text color
+		>div:nth-child(3)>div:first-child {
+			color: var(--dmfo-light) !important;
+		}
+	}
+}
+
+// Hide Edge bottom banner ad
+div[aria-label='Microsoft Edge upsell'] {
+	display: none !important;
+}
+
+/*#endregion*/
+
+
+/*#region STYLES FOR CALENDAR */
+#app>div:first-child>div:nth-child(2) {
+
+	// Calendar month labels background color
+	>div:first-child {
+		background: var(--dmfo-darker) !important;
+	}
+
+	// Change calendar days labels background color and remove bottom border
+	>div:nth-child(2) {
+		background: var(--dmfo-darkest) !important;
+		border-bottom: 0 !important;
+	}
+}
+
+
+// Calendar selected day background
+.ms-CalendarDay-hoverStyle {
+	background-color: transparent !important;
+	color: var(--dmfo-lightest) !important;
+}
+
+div[class*="daySelected"] {
+	background: var(--dmfo-darker) !important;
+}
+
+// Calendar agenda background
+.agenda-view {
+	background: var(--dmfo-darkest) !important;
+}
+
+// Calendar item title text color
+div[data-agendaitem]>div:first-child>div:first-child {
+	color: var(--dmfo-lightest) !important;
+
+	// Calendar item description text color
+	>div:last-child {
+		color: var(--dmfo-lighter) !important;
+	}
+}
+
+/*#endregion*/
+
+
+/*#region STYLES FOR PEOPLE LIST */
+// Body background
+// TODO: This applies to desktop site as well. Move to different section
+body {
+	// background-color: var(--dmfo-darkest) !important;
+}
+
+// Heading text color
+#app>div>div>div[role=heading] {
+	color: var(--dmfo-lightest) !important;
+}
+
+// Name text color
+.ms-Persona-primaryText {
+	color: var(--dmfo-lightest) !important;
+}
+
+// Email text color
+.ms-Persona-secondaryText {
+	color: var(--dmfo-lighter) !important;
+}
+
+/*#endregion*/
+
+
+/*#region STYLES FOR SIDE PANE */
+#PeopleSidePane {
+	// TODO: WIP
+}
+
+/*#endregion*/
+/*#endregion*/

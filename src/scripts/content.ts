@@ -2,11 +2,11 @@
 	'use strict';
 
 	// 0-pad a number to 2 digits
-	const pad = (num) => {
+	const pad = (num: number): string => {
 		return num.toString().padStart(2, '0');
 	};
 
-	const log = (msg) => {
+	const log = (msg: string) => {
 		const d = new Date();
 
 		console.debug('[' + pad(d.getHours()) + ':' + pad(d.getMinutes()) + '.' + pad(d.getSeconds()) + '] DMFO: ' + msg);
@@ -14,22 +14,22 @@
 
 	log('Content script loaded')
 
-	chrome.storage.sync.get({ composePaneStyling: false }, ({ composePaneStyling }) => {
+	chrome.storage.sync.get({ composePaneStyling: false }, ({ composePaneStyling }: { composePaneStyling: boolean }) => {
 		log('Options loaded')
 
-		const getBottomBar = (composePane) => {
-			return composePane.querySelector('div[style="background-color: rgb(250, 249, 248);"')
+		const getBottomBar = (composePane: Element): HTMLElement | null => {
+			return composePane.querySelector('div[style="background-color: rgb(250, 249, 248);"]')
 		};
 
-		const styleBottomBar = (bottomBar) => {
+		const styleBottomBar = (bottomBar: HTMLElement) => {
 			bottomBar.style = ''
 		};
 
-		const getComposePane = () => {
+		const getComposePane = (): HTMLElement | null => {
 			return document.querySelector('#ReadingPaneContainerId > div:first-child > div:first-child > div:first-child > div:first-child[class]')
 		};
 
-		const styleComposePane = (composePane) => {
+		const styleComposePane = (composePane: HTMLElement) => {
 			composePane.className = ''
 
 			let bottomBar = getBottomBar(composePane)
@@ -64,7 +64,7 @@
 		if (composePaneStyling) {
 			const link = document.createElement('link');
 
-			link.href = chrome.extension.getURL('css/compose.css');
+			link.href = chrome.runtime.getURL('styles/compose.css');
 			link.type = 'text/css';
 			link.rel = 'stylesheet';
 
@@ -91,7 +91,13 @@
 					})
 				});
 
-				observer.observe(document.getElementById('app'), {
+				const app = document.getElementById('app');
+
+				if (!app) {
+					return;
+				}
+
+				observer.observe(app, {
 					childList: true, subtree: true, attributes: false, characterData: false
 				});
 			} else {

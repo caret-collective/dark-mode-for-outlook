@@ -2,14 +2,14 @@
 	"name": "__MSG_extensionName__",
 	"short_name": "__MSG_extensionShortName__",
 	"description": "__MSG_extensionDescription__",
-	"version": "3.6",
+	"version": "4.0.0",
 	"default_locale": "en",
 	"icons": {
-		"128": "img/128.png",
-		"64": "img/64.png",
-		"48": "img/48.png",
-		"32": "img/32.png",
-		"16": "img/16.png"
+		"128": "images/128.png",
+		"64": "images/64.png",
+		"48": "images/48.png",
+		"32": "images/32.png",
+		"16": "images/16.png"
 	},
 	"options_ui": {
 		"page": "options.html",
@@ -24,10 +24,10 @@
 				"*://support.office.live.com/*"
 			],
 			"css": [
-				"css/main.css"
+				"styles/main.css"
 			],
 			"js": [
-				"js/content.js"
+				"scripts/content.js"
 			],
 			"run_at": "document_start"
 		},
@@ -36,7 +36,7 @@
 				"*://support.office.live.com/*"
 			],
 			"css": [
-				"css/help.css"
+				"styles/help.css"
 			],
 			"run_at": "document_start",
 			"all_frames": true
@@ -44,24 +44,37 @@
 	],
 	"background": {
 		"scripts": [
-			"js/background.js"
+			"scripts/background.js"
 		],
-		"persistent": false
+		"service_worker": "scripts/background.js"
 	},
 	"permissions": [
+		"scripting",
 		"storage"
 	],
 	"optional_permissions": [
-		"tabs",
-		"*://*/"
+		"tabs"
+	],
+	"optional_host_permissions": [
+		"*://*/*"
 	],
 	"web_accessible_resources": [
-		"css/compose.css"
+		{
+			"resources": [
+				"styles/compose.css"
+			],
+			"matches": [
+				"*://outlook.live.com/*",
+				"*://outlook.office.com/*",
+				"*://outlook.office365.com/*",
+				"*://support.office.live.com/*"
+			]
+		}
 	],
 	"browser_specific_settings": {
 		"gecko": {
 			"id": "{cf211314-517c-470f-a589-02a4b272f7d5}"
 		}
 	},
-	"manifest_version": 2
+	"manifest_version": 3
 }

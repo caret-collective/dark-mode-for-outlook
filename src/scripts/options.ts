@@ -2,15 +2,15 @@
   'use strict';
 
   // Constants
-  const composePaneStylingCheckbox = document.getElementById('composePaneStylingCheckbox')
-  const customDomainForm = document.getElementById('customDomainForm');
-  const customDomainInput = document.getElementById('customDomainInput');
-  const customDomainsListContainer = document.getElementById('customDomainsList');
-  const addCustomDomainButton = document.getElementById('addCustomDomainButton');
-  const statusMessage = document.getElementById('statusMessage');
-  const localizableElements = document.querySelectorAll('*[data-locale-code]');
+  const composePaneStylingCheckbox = document.getElementById('composePaneStylingCheckbox') as HTMLInputElement;
+  const customDomainForm = document.getElementById('customDomainForm') as HTMLFormElement;
+  const customDomainInput = document.getElementById('customDomainInput') as HTMLInputElement;
+  const customDomainsListContainer = document.getElementById('customDomainsList') as HTMLUListElement;
+  const addCustomDomainButton = document.getElementById('addCustomDomainButton') as HTMLButtonElement;
+  const statusMessage = document.getElementById('statusMessage') as HTMLElement;
+  const localizableElements = document.querySelectorAll<HTMLElement>('*[data-locale-code]');
   const localeCode = chrome.i18n.getMessage('@@ui_locale');
-  const removeButtonText = chrome.i18n.getMessage('optionsRemoveButtonText' || '- Remove');
+  const removeButtonText = chrome.i18n.getMessage('optionsRemoveButtonText') || '- Remove';
   const reservedDomains = [
     '*://outlook.live.com/*',
     '*://outlook.office.com/*',
@@ -19,10 +19,10 @@
   ];
 
   // Runtime
-  const rawCustomDomainSet = new Set();
+  const rawCustomDomainSet = new Set<string>();
 
   // Functions
-  const showMessage = (isPositive, msgCode) => {
+  const showMessage = (isPositive: boolean, msgCode: string) => {
     let msg = chrome.i18n.getMessage(msgCode);
 
     if (!msg) {
@@ -41,7 +41,9 @@
     }, 4000);
   };
 
-  const toggleComposePaneStyling = ({ target: { checked } }) => {
+  const toggleComposePaneStyling = ({ target }: Event) => {
+    const { checked } = target as HTMLInputElement;
+
     chrome.storage.sync.set({ composePaneStyling: checked }, () => {
       showMessage(true, 'optionsStatusMessage_success');
     });
@@ -51,7 +53,7 @@
     customDomainInput.value = customDomainInput.value.replace(/^.*:\/\//, '').replace(/\/\//, '\/');
   };
 
-  const getRawDomain = () => {
+  const getRawDomain = (): string | false | null => {
     let rawDomain = customDomainInput.value.toLowerCase();
 
     if (rawDomain === '') {
@@ -73,11 +75,11 @@
     }
   };
 
-  const toReadableDomain = (savedDomain) => {
+  const toReadableDomain = (savedDomain: string | null): string => {
     return (savedDomain === null) ? '' : savedDomain.replace(/^\*:\/\//, '').replace(/\/\*$/, '');
   };
 
-  const addCustomDomainListItem = (rawDomain) => {
+  const addCustomDomainListItem = (rawDomain: string) => {
     const listItem = document.createElement('li');
     const itemLabel = document.createElement('p');
     const removeButton = document.createElement('button');
@@ -93,7 +95,7 @@
     });
   };
 
-  const addCustomDomain = (rawDomain) => {
+  const addCustomDomain = (rawDomain: string) => {
     if (reservedDomains.includes(rawDomain)) {
       showMessage(false, 'optionsStatusMessage_addCustomDomain_isReservedError');
     } else {
@@ -120,7 +122,7 @@
     }
   };
 
-  const removeCustomDomain = (listItem, rawDomain) => {
+  const removeCustomDomain = (listItem: HTMLLIElement, rawDomain: string) => {
     chrome.permissions.remove({ origins: [rawDomain] }, (wasOriginRemoved) => {
       if (wasOriginRemoved) {
         listItem.remove();
@@ -154,15 +156,15 @@
   };
 
   const restoreSettings = () => {
-    chrome.storage.sync.get({ composePaneStyling: false }, ({ composePaneStyling }) => {
+    chrome.storage.sync.get({ composePaneStyling: false }, ({ composePaneStyling }: { composePaneStyling: boolean }) => {
       composePaneStylingCheckbox.checked = composePaneStyling;
     });
 
     chrome.permissions.getAll((permissions) => {
-      if ('origins' in permissions) {
+      if (permissions.origins) {
         permissions.origins.filter((origin) => {
           return !reservedDomains.includes(origin);
-        }).forEach((rawDomain) => {
+        }).forEach((rawDomain: string) => {
           addCustomDomainListItem(rawDomain);
           rawCustomDomainSet.add(rawDomain);
         });
@@ -174,14 +176,14 @@
   composePaneStylingCheckbox.addEventListener('change', toggleComposePaneStyling);
   customDomainInput.addEventListener('input', removeInvalidChars);
   addCustomDomainButton.addEventListener('click', validateCustomDomain);
-  customDomainForm.addEventListener('submit', (event) => {
+  customDomainForm.addEventListener('submit', (event: SubmitEvent) => {
     event.preventDefault();
 
     return false;
   });
 
   localizableElements.forEach((textElement) => {
-    const elementLocaleCode = chrome.i18n.getMessage(textElement.getAttribute('data-locale-code'));
+    const elementLocaleCode = chrome.i18n.getMessage(textElement.getAttribute('data-locale-code') ?? '');
 
     if (elementLocaleCode) {
       textElement.textContent = elementLocaleCode;
