@@ -12,7 +12,7 @@
 		"sass",
 		"webextension"
 	],
-	"main": "build.ts",
+	"main": "scripts/build.ts",
 	"devDependencies": {
 		"@types/archiver": "^8.0.0",
 		"@types/bun": "^1.4.0",
@@ -30,7 +30,7 @@
 	"scripts": {
 		"start": "bun run build",
 		"check": "tsc --noEmit",
-		"build": "bun run check && bun run build.ts"
+		"build": "bun run check && bun run scripts/build.ts"
 	},
 	"repository": {
 		"type": "git",

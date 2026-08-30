@@ -11,6 +11,6 @@
 		"skipLibCheck": true,
 		"moduleDetection": "force"
 	},
-	"include": ["build.ts", "js/**/*.ts", "types/**/*.d.ts"],
+	"include": ["scripts/**/*.ts", "src/**/*.ts"],
 	"exclude": ["build", "node_modules"]
 }
