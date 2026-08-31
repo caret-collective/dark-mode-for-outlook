@@ -1,7 +1,7 @@
 {
-	"name": "__MSG_extensionName__",
-	"short_name": "__MSG_extensionShortName__",
-	"description": "__MSG_extensionDescription__",
+	"name": "__MSG_name__",
+	"short_name": "__MSG_sn__",
+	"description": "__MSG_desc__",
 	"version": "4.0.0",
 	"default_locale": "en",
 	"icons": {
