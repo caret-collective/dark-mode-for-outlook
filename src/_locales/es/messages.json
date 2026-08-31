@@ -1,11 +1,11 @@
 {
-	"extensionName": {
+	"name": {
 		"message": "Modo oscuro para Outlook"
 	},
-	"extensionShortName": {
+	"sn": {
 		"message": "MOPO"
 	},
-	"extensionDescription": {
+	"desc": {
 		"message": "Un mejor tema oscuro para Microsoft Outlook."
 	},
 	"optionsHeaderText": {

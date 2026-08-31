@@ -1,13 +1,13 @@
 {
-	"extensionName": {
+	"name": {
 		"message": "Dark Mode for Outlook",
 		"description": "The name of the extension"
 	},
-	"extensionShortName": {
+	"sn": {
 		"message": "DMFO",
 		"description": "The short name of the extension"
 	},
-	"extensionDescription": {
+	"desc": {
 		"message": "A better dark theme for Microsoft Outlook.",
 		"description": "A description of the extension"
 	},
