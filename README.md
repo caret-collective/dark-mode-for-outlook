@@ -1,6 +1,6 @@
 <!-- Project Header -->
 <div align="center">
-  <img class="projectLogo" src="src/images/icon.svg" alt="Project logo" title="Project logo" width="256">
+  <img class="projectLogo" src="src/assets/icon.svg" alt="Project logo" title="Project logo" width="256">
 
   <h1 class="projectName">Dark Mode for Outlook</h1>
 
